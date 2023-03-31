@@ -1,24 +1,29 @@
+
 import React from 'react'
-import { Pagination } from 'react-bootstrap'
 import { POSTS_PER_PAGE } from '../Utils/constants'
 
-const Pages = ({posts}) => {
+const Pages = ({posts,updatePageNumber}) => {
 
   const pageNumbers = []
 
   for(let i=1; i<=posts.length / POSTS_PER_PAGE;i++){
-       pageNumbers.push(
-        <Pagination.Item key={i} >
-           {i}
-        </Pagination.Item>)
+       pageNumbers.push(i)
   }
 
 
   return (
     <div>
-  <Pagination>
-    {pageNumbers}
-  </Pagination>
+  <ul>
+    {pageNumbers.map((pageNumber) => {
+      return (
+          <li key={pageNumber}>
+            <a href='!#' onClick={() => updatePageNumber(pageNumber)}>
+              {pageNumber}
+            </a>
+          </li>
+      )
+    })}
+  </ul>
   </div>
   )
 }

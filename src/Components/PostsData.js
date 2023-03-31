@@ -8,6 +8,7 @@ const PostsData = () => {
     const [posts, setPosts] = useState([])
 
     const [currentPage , setCurrentPage ] = useState(1)
+
     useEffect(() => {
         fetchPosts()
     }, [])
@@ -20,10 +21,15 @@ const PostsData = () => {
 
     const postsLimit = slicePosts(currentPage , posts)
 
+    const updatePageNumber = (pageNumber) => {
+        console.log(pageNumber)
+        setCurrentPage(pageNumber)
+    }
+
     return (
         <div>
             <DisplayPosts posts = {postsLimit} />
-            <Pages posts = {posts} />
+            <Pages posts = {posts} updatePageNumber={updatePageNumber}/>
         </div>
     )
 }
