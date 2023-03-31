@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { POST_URL } from '../Utils/constants'
+import DisplayPosts from './DisplayPosts'
 
 const PostsData = () => {
 
@@ -16,7 +17,9 @@ const PostsData = () => {
     }
 
     return (
-        <div>PostsData</div>
+        <div>
+            <DisplayPosts posts = {posts} />
+        </div>
     )
 }
 
